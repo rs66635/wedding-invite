@@ -1,170 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rakesh & Priya Wedding</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakesh & Pratibha Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    background: #fff8f0;
-}
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark-overlay: rgba(0, 0, 0, 0.45);
+        }
 
-/* HEADER - FULL IMAGE NO CROP */
-.header {
-    height: 100vh;
-    position: relative;
-    background: black;
-    overflow: hidden;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: #fffaf5;
+            color: #333;
+        }
 
-/* IMAGE */
-.header img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;   /* 🔥 FULL IMAGE */
-}
+        /* HEADER SECTION */
+        .header {
+            height: 100vh;
+            position: relative;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
 
-/* DARK OVERLAY */
-.overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4);
-}
+        .header img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Poori screen cover karega */
+            z-index: 1;
+        }
 
-/* TEXT */
-.header-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-}
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-overlay);
+            z-index: 2;
+        }
 
-h1 {
-    font-family: 'Great Vibes';
-    font-size: 3rem;
-}
+        .header-content {
+            position: relative;
+            z-index: 3;
+            color: white;
+            padding: 20px;
+        }
 
-/* SECTION */
-.section {
-    padding: 40px 15px;
-}
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            margin: 0;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+        }
 
-.btn {
-    padding: 12px 25px;
-    background: #d4af37;
-    color: white;
-    border-radius: 30px;
-    text-decoration: none;
-    display: inline-block;
-    margin: 10px;
-}
+        .header-content p {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
 
-/* COUNTDOWN */
-.countdown {
-    font-size: 1.4rem;
-    color: #d4af37;
-}
+        /* GENERAL SECTION */
+        .section {
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-/* GALLERY */
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+        h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
 
-.gallery img {
-    width: 90%;
-    max-width: 250px;
-    margin: 10px;
-    border-radius: 12px;
-}
+        /* COUNTDOWN */
+        .countdown-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: -50px; /* Overlap effect */
+            position: relative;
+            z-index: 4;
+        }
 
-/* MOBILE */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.2rem;
-    }
-}
-</style>
+        .countdown {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #444;
+        }
+
+        /* BUTTONS */
+        .btn {
+            padding: 14px 30px;
+            background: var(--gold);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            transition: 0.3s;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #b8962d;
+            transform: translateY(-2px);
+        }
+
+        /* FORM */
+        input {
+            width: 80%;
+            max-width: 300px;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        footer {
+            padding: 40px;
+            background: #fdf2e9;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .header-content p { font-size: 1.2rem; }
+            .countdown { font-size: 1.5rem; }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-
-    <img src="couple.png" alt="Couple">
-
-    <div class="overlay"></div>
-
-    <div class="header-content">
-        <h1>Rakesh & Pratibha</h1>
-        <p>We are getting married 💍</p>
+    <div class="header">
+        <img src="images/couple.png" alt="Rakesh and Pratibha">
+        <div class="overlay"></div>
+        <div class="header-content">
+            <h1>Rakesh & Pratibha</h1>
+            <p>We are getting married 💍</p>
+        </div>
     </div>
 
-</div>
+    <div class="section">
+        <div class="countdown-container">
+            <h2>Save The Date</h2>
+            <div id="countdown" class="countdown">Calculating...</div>
+            <p>December 25, 2026</p>
+        </div>
+    </div>
 
-<!-- COUNTDOWN -->
-<div class="section">
-    <h2>Save The Date</h2>
-    <div id="countdown" class="countdown"></div>
-</div>
+    <div class="section">
+        <h2>Wedding Events 📍</h2>
 
-<!-- LOCATIONS -->
-<div class="section">
-    <h2>Wedding Events 📍</h2>
+        <div style="margin-bottom: 30px;">
+            <h3>🎉 Tilak Ceremony</h3>
+            <p>Join us for the traditional Tilak ceremony.</p>
+            <a class="btn" href="https://maps.google.com" target="_blank">📍 View Location</a>
+        </div>
 
-    <h3>🎉 Tilak Ceremony</h3>
-    <a class="btn" href="https://maps.app.goo.gl/wwFNXBdN77ndbRaC6" target="_blank">
-        📍 Open Tilak Location
-    </a>
+        <div style="margin-bottom: 30px;">
+            <h3>💍 Wedding Ceremony</h3>
+            <p>The main event and dinner.</p>
+            <a class="btn" href="https://maps.google.com" target="_blank">📍 View Location</a>
+        </div>
+    </div>
 
-    <h3>💍 Wedding Ceremony</h3>
-    <a class="btn" href="https://maps.app.goo.gl/a8nfPVgtghrEJ6xr5" target="_blank">
-        📍 Open Wedding Location
-    </a>
-</div>
+    <div class="section" style="background: #fff;">
+        <h2>RSVP 💌</h2>
+        <p>Please let us know if you can make it!</p>
+        <form onsubmit="submitForm(event)">
+            <input type="text" id="name" placeholder="Your Full Name" required><br>
+            <input type="number" id="guests" placeholder="Number of Guests" min="1" required><br>
+            <button type="submit" class="btn">Submit Response</button>
+        </form>
+    </div>
 
-<!-- RSVP -->
-<div class="section">
-    <h2>RSVP 💌</h2>
+    <footer>
+        Made with ❤️ by Rakesh <br>
+        &copy; 2026 Rakesh & Pratibha Wedding
+    </footer>
 
-    <form onsubmit="submitForm(event)">
-        <input type="text" placeholder="Your Name" required><br>
-        <input type="number" placeholder="Guests"><br>
-        <button class="btn">Submit</button>
-    </form>
-</div>
+    <script>
+        // COUNTDOWN TIMER
+        const weddingDate = new Date("Dec 25, 2026 00:00:00").getTime();
 
-<footer>
-    Made with ❤️ by Rakesh
-</footer>
+        const updateCountdown = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
 
-<script>
-// COUNTDOWN
-const date = new Date("Dec 25, 2026").getTime();
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-setInterval(() => {
-    const now = new Date().getTime();
-    const gap = date - now;
-    const days = Math.floor(gap / (1000*60*60*24));
-    document.getElementById("countdown").innerHTML = days + " Days Left 🎉";
-}, 1000);
+            if (distance < 0) {
+                clearInterval(updateCountdown);
+                document.getElementById("countdown").innerHTML = "Today is the Big Day! 🎉";
+            } else {
+                document.getElementById("countdown").innerHTML = `${days} Days & ${hours} Hours to go!`;
+            }
+        }, 1000);
 
-// RSVP
-function submitForm(e){
-    e.preventDefault();
-    alert("Thank you ❤️");
-}
-</script>
+        // RSVP FORM SUBMISSION
+        function submitForm(e) {
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            alert(`Thank you, ${name}! Your RSVP has been received. ❤️`);
+            document.querySelector("form").reset();
+        }
+    </script>
 
 </body>
 </html>
