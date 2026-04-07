@@ -195,15 +195,6 @@
     </div>
 
     <div class="section">
-        <h2>RSVP 💌</h2>
-        <form onsubmit="submitForm(event)">
-            <input type="text" id="name" placeholder="Your Name" required><br>
-            <input type="number" id="guests" placeholder="No. of Guests" required><br>
-            <button type="submit" class="btn">Submit</button>
-        </form>
-    </div>
-
-    <div class="section">
         <h2>Scan Invite 📲</h2>
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://rs66635.github.io/wedding-invite/" style="margin-bottom: 20px;">
         <br>
@@ -233,11 +224,6 @@
                 document.getElementById("countdown").innerHTML = `${days} Days & ${hours} Hours Left`;
             }
         }, 1000);
-
-        function submitForm(e) {
-            e.preventDefault();
-            alert("Thank you for the RSVP! ❤️");
-        }
     </script>
 
 </body>
