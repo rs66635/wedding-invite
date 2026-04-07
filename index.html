@@ -10,7 +10,7 @@
     <style>
         :root {
             --gold: #d4af37;
-            --dark-overlay: rgba(0, 0, 0, 0.45);
+            --dark-overlay: rgba(0, 0, 0, 0.4);
         }
 
         body {
@@ -22,23 +22,18 @@
             color: #333;
         }
 
-        /* HEADER SECTION */
+        /* HEADER SECTION - FIXED FOR NO CROP */
         .header {
-            height: 100vh;
+            width: 100%;
             position: relative;
             background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            line-height: 0; /* Gaps hatane ke liye */
         }
 
         .header img {
-            position: absolute;
             width: 100%;
-            height: 100%;
-            object-fit: cover; /* Poori screen cover karega */
-            z-index: 1;
+            height: auto; /* Photo ki original shape maintain rakhega */
+            display: block;
         }
 
         .overlay {
@@ -52,77 +47,75 @@
         }
 
         .header-content {
-            position: relative;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 3;
             color: white;
-            padding: 20px;
+            width: 90%;
         }
 
         h1 {
             font-family: 'Great Vibes', cursive;
-            font-size: 4.5rem;
+            font-size: clamp(2.5rem, 8vw, 4.5rem); /* Responsive font size */
             margin: 0;
-            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         }
 
         .header-content p {
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+            margin-top: 10px;
         }
 
-        /* GENERAL SECTION */
+        /* CONTENT SECTIONS */
         .section {
-            padding: 60px 20px;
+            padding: 50px 20px;
             max-width: 800px;
             margin: 0 auto;
+        }
+
+        .countdown-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-top: -30px; 
+            position: relative;
+            z-index: 10;
+        }
+
+        .countdown {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--gold);
         }
 
         h2 {
             font-family: 'Great Vibes', cursive;
             font-size: 2.5rem;
             color: var(--gold);
-            margin-bottom: 20px;
         }
 
-        /* COUNTDOWN */
-        .countdown-container {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-top: -50px; /* Overlap effect */
-            position: relative;
-            z-index: 4;
-        }
-
-        .countdown {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #444;
-        }
-
-        /* BUTTONS */
         .btn {
-            padding: 14px 30px;
+            padding: 12px 25px;
             background: var(--gold);
             color: white;
             border-radius: 50px;
             text-decoration: none;
             display: inline-block;
             margin: 10px;
-            transition: 0.3s;
             font-weight: 600;
             border: none;
-            cursor: pointer;
+            transition: 0.3s;
         }
 
         .btn:hover {
+            transform: scale(1.05);
             background: #b8962d;
-            transform: translateY(-2px);
         }
 
-        /* FORM */
         input {
             width: 80%;
             max-width: 300px;
@@ -130,21 +123,13 @@
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 8px;
-            outline: none;
         }
 
         footer {
-            padding: 40px;
+            padding: 30px;
             background: #fdf2e9;
-            font-size: 0.9rem;
-            color: #888;
-        }
-
-        /* MOBILE OPTIMIZATION */
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .header-content p { font-size: 1.2rem; }
-            .countdown { font-size: 1.5rem; }
+            font-size: 0.85rem;
+            color: #777;
         }
     </style>
 </head>
@@ -152,7 +137,7 @@
 <body>
 
     <div class="header">
-        <img src="couple.png" alt="Rakesh and Pratibha">
+        <img src="images/couple.png" alt="Rakesh & Pratibha">
         <div class="overlay"></div>
         <div class="header-content">
             <h1>Rakesh & Pratibha</h1>
@@ -163,67 +148,58 @@
     <div class="section">
         <div class="countdown-container">
             <h2>Save The Date</h2>
-            <div id="countdown" class="countdown">Calculating...</div>
+            <div id="countdown" class="countdown">Loading...</div>
             <p>December 25, 2026</p>
         </div>
     </div>
 
     <div class="section">
         <h2>Wedding Events 📍</h2>
-
-        <div style="margin-bottom: 30px;">
+        <div style="margin-bottom: 25px;">
             <h3>🎉 Tilak Ceremony</h3>
-            <p>Join us for the traditional Tilak ceremony.</p>
-            <a class="btn" href="https://maps.google.com" target="_blank">📍 View Location</a>
+            <a class="btn" href="YOUR_GOOGLE_MAPS_LINK_HERE" target="_blank">📍 Open Location</a>
         </div>
-
-        <div style="margin-bottom: 30px;">
+        <div style="margin-bottom: 25px;">
             <h3>💍 Wedding Ceremony</h3>
-            <p>The main event and dinner.</p>
-            <a class="btn" href="https://maps.google.com" target="_blank">📍 View Location</a>
+            <a class="btn" href="YOUR_GOOGLE_MAPS_LINK_HERE" target="_blank">📍 Open Location</a>
         </div>
     </div>
 
-    <div class="section" style="background: #fff;">
+    <div class="section">
         <h2>RSVP 💌</h2>
-        <p>Please let us know if you can make it!</p>
         <form onsubmit="submitForm(event)">
-            <input type="text" id="name" placeholder="Your Full Name" required><br>
-            <input type="number" id="guests" placeholder="Number of Guests" min="1" required><br>
-            <button type="submit" class="btn">Submit Response</button>
+            <input type="text" id="name" placeholder="Your Name" required><br>
+            <input type="number" id="guests" placeholder="No. of Guests" required><br>
+            <button type="submit" class="btn">Confirm Attendance</button>
         </form>
     </div>
 
     <footer>
         Made with ❤️ by Rakesh <br>
-        &copy; 2026 Rakesh & Pratibha Wedding
+        © 2026 Rakesh & Pratibha
     </footer>
 
     <script>
         // COUNTDOWN TIMER
         const weddingDate = new Date("Dec 25, 2026 00:00:00").getTime();
 
-        const updateCountdown = setInterval(() => {
+        setInterval(() => {
             const now = new Date().getTime();
-            const distance = weddingDate - now;
+            const gap = weddingDate - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const days = Math.floor(gap / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-            if (distance < 0) {
-                clearInterval(updateCountdown);
-                document.getElementById("countdown").innerHTML = "Today is the Big Day! 🎉";
+            if (gap < 0) {
+                document.getElementById("countdown").innerHTML = "The Big Day is Here! 🎉";
             } else {
-                document.getElementById("countdown").innerHTML = `${days} Days & ${hours} Hours to go!`;
+                document.getElementById("countdown").innerHTML = `${days} Days & ${hours} Hours Left`;
             }
         }, 1000);
 
-        // RSVP FORM SUBMISSION
         function submitForm(e) {
             e.preventDefault();
-            const name = document.getElementById("name").value;
-            alert(`Thank you, ${name}! Your RSVP has been received. ❤️`);
-            document.querySelector("form").reset();
+            alert("Thank you for the RSVP! ❤️");
         }
     </script>
 
