@@ -10,7 +10,7 @@
     <style>
         :root {
             --gold: #d4af37;
-            --dark-overlay: rgba(0, 0, 0, 0.4);
+            --bg-color: #fffaf5;
         }
 
         body {
@@ -18,58 +18,52 @@
             padding: 0;
             font-family: 'Poppins', sans-serif;
             text-align: center;
-            background: #fffaf5;
+            background: var(--bg-color);
             color: #333;
             overflow-x: hidden;
         }
 
-        /* HEADER IMAGE CONFIGURATION */
+        /* HEADER SECTION - TEXT AT TOP, IMAGE BELOW */
         .header {
             width: 100%;
-            height: 100vh;
-            position: relative;
-            background: #000;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            flex-direction: column;
+            background: #000; /* Photo ke sides ka color */
+        }
+
+        .header-content {
+            background: var(--bg-color); /* Top bar background */
+            padding: 40px 20px;
+            z-index: 10;
+        }
+
+        .header-content h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.8rem, 10vw, 4.5rem);
+            margin: 0;
+            color: var(--gold);
+        }
+
+        .header-content p {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            margin-top: 10px;
+            color: #555;
+            letter-spacing: 1px;
+        }
+
+        .image-container {
+            width: 100%;
+            background: #000;
+            line-height: 0;
         }
 
         .header img {
             width: 100%;
-            height: 100%;
+            height: auto;
+            max-height: 85vh; /* Laptop screen par fit rahega */
             object-fit: contain;
-            z-index: 1;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--dark-overlay);
-            z-index: 2;
-        }
-
-        .header-content {
-            position: absolute;
-            z-index: 3;
-            color: white;
-            width: 90%;
-        }
-
-        h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            margin: 0;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-        }
-
-        .header-content p {
-            font-size: clamp(1rem, 4vw, 1.5rem);
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
-            margin-top: 10px;
+            display: block;
+            margin: 0 auto;
         }
 
         /* SECTIONS */
@@ -84,9 +78,9 @@
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin-top: -40px; 
+            margin-top: -30px; 
             position: relative;
-            z-index: 10;
+            z-index: 20;
         }
 
         .countdown {
@@ -121,6 +115,24 @@
             background: #b8962d;
         }
 
+        /* EVENT CARDS */
+        .event-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .event-date {
+            font-weight: 600;
+            color: #777;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
         /* GALLERY */
         .gallery {
             display: flex;
@@ -142,32 +154,18 @@
             font-size: 0.85rem;
             color: #777;
         }
-
-        .event-card {
-            background: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .event-date {
-            font-weight: 600;
-            color: #555;
-            display: block;
-            margin-bottom: 5px;
-        }
     </style>
 </head>
 
 <body>
 
     <div class="header">
-        <img src="couple.png" alt="Rakesh & Pratibha">
-        <div class="overlay"></div>
         <div class="header-content">
             <h1>Rakesh & Pratibha</h1>
             <p>We are getting married 💍</p>
+        </div>
+        <div class="image-container">
+            <img src="couple.png" alt="Rakesh & Pratibha Photo">
         </div>
     </div>
 
@@ -175,7 +173,7 @@
         <div class="countdown-container">
             <h2>Save The Date</h2>
             <div id="countdown" class="countdown">Loading...</div>
-            <p style="color: var(--gold); font-weight: 600;">June 24, 2026</p>
+            <p style="color: var(--gold); font-weight: 600; margin-top: 10px;">June 24, 2026</p>
         </div>
     </div>
 
@@ -205,7 +203,7 @@
 
     <div class="section">
         <h2>Scan Invite 📲</h2>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://rs66635.github.io/wedding-invite/" style="margin-bottom: 20px;">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://rs66635.github.io/wedding-invite/" style="margin-bottom: 20px; border: 10px solid white; border-radius: 10px;">
         <br>
         <a class="btn" style="background: #25D366;" href="https://wa.me/?text=You're invited to our wedding 🎉 https://rs66635.github.io/wedding-invite/">
             📲 Share on WhatsApp
@@ -218,7 +216,7 @@
     </footer>
 
     <script>
-        // Wedding Date: 24 June 2026
+        // Wedding Countdown Timer for June 24, 2026
         const weddingDate = new Date("June 24, 2026 00:00:00").getTime();
 
         setInterval(() => {
@@ -228,10 +226,11 @@
             const days = Math.floor(gap / (1000 * 60 * 60 * 24));
             const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
+            const countdownElement = document.getElementById("countdown");
             if (gap < 0) {
-                document.getElementById("countdown").innerHTML = "The Big Day is Here! 🎉";
+                countdownElement.innerHTML = "The Big Day is Here! 🎉";
             } else {
-                document.getElementById("countdown").innerHTML = `${days} Days & ${hours} Hours Left`;
+                countdownElement.innerHTML = `${days} Days & ${hours} Hours Left`;
             }
         }, 1000);
     </script>
